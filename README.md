@@ -32,12 +32,17 @@ Write a program or piece of software. When executed it should accept a time, mee
 
 ### Methods
 
-* I have used Pandas as my primary data analysis and manipulation.  With small files, its good, but with larger big data - primarily use Pyspark.  Lists are mostly used.
+* I have used Python/Pandas as my primary data analysis and manipulation.  With small files, its good, but with larger big data should primarily use Pyspark. 
 
 ### Dependencies
 
 * Prerequisites, libraries, OS version, etc., needed before installing program.
 * ex. MacOS/Linux, Python 3.6+, Pip 3
+
+### Sample Demo 
+
+![](demo.mp4)
+
 
 ### Installing
 
