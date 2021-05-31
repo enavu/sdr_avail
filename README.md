@@ -41,6 +41,8 @@ Write a program or piece of software. When executed it should accept a time, mee
 
 ### Sample Demo 
 
+This is how the program should work, if you need higher resolution, please download the mov file.
+
 ![](demo.gif)
 
 
