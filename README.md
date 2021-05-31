@@ -1,10 +1,15 @@
 # Sales Development Representatives (SDR) Availability
 
+## Requirements and Description
 
+* My understanding of this project is that I should be able to understand:
 
-
-## Description
-
+```
+inputs
+multiple data sets and merge them  
+filtering out data sets 
+reading requirements clearly
+```
 You have been provided a ZIP file containing several directories and files. Each directory represents a Twilio office within the United States. Each file contains a list of Sales Development Representatives (SDR) and their availability for the next week.
  
 Write a program that takes a time, a meeting length, and an office location. The program should return a list of SDRs that are available for a meeting
@@ -20,6 +25,14 @@ Original: Write a program that takes a time, a meeting length, and an office loc
 Write a program or piece of software. When executed it should accept a time, meeting length and office location that I would like a meeting to take place in. It should return a list of SDRs that are available to attend that meeting.
 
 ## Getting Started
+
+### Planning and Brainstorming Board
+
+* I have used Trello to map out my thoughts and make sure I plan out my development here. Very high level methods of breaking out the project - https://trello.com/b/nquWokrK/twilio-program.  
+
+### Methods
+
+* I have used Pandas as my primary data analysis and manipulation.  With small files, its good, but with larger big data - primarily use Pyspark.  Lists are mostly used.
 
 ### Dependencies
 
