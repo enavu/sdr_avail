@@ -63,8 +63,7 @@ def get_sdr_list(min, office, time_selected):
             begin_time = dt.datetime.strptime(s[0], '%H:%M').time()
             end_time = dt.datetime.strptime(s[1], '%H:%M').time()
             print(str(time_selected[0]) +" "+str(begin_time) +" "+ str(time_selected[1]) +" "+str(end_time))
-            test = time_selected[0] > begin_time 
-            #and time_selected[1] < end_time
+            test = time_selected[0] > begin_time and time_selected[1] < end_time
             if test:
                 print(test)
                 email_list.append(row['Email'])
