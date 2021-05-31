@@ -4,7 +4,7 @@ setup(
     name='sdr_availability',
     version='0.1',
     description='sdr_availability',
-    url='ht',
+    url='https://github.com/enavu/sdr_avail.git',
     author='Ena Vu',
     author_email='ena@enavu.io',
     license='MIT',
