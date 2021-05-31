@@ -18,7 +18,7 @@ def prompt_office():
         officeOptions += "[{}]: {}".format(index, row['Office']) + "\n"
 
     while tries > 0:
-        print("Select a number below from list, to select your Office meeting availibility search: \n")
+        print("Select a number below from list, to select your Office meeting availability search: \n")
         print(officeOptions) 
         idx = input()
 

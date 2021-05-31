@@ -25,7 +25,8 @@ l_1= len(sdr[1])
 
 ###This function needs to be updated such that - the time needs to be handled correctly
 ###Input of 1 - 7 hour are in AM currently and we need to handle it such that its converted to business hours
-###Since I ran out of time, I have listed all availibilities for the office overall
+###Since I ran out of time, I have listed all availabilities for the office overall
+
 print(f"There are {l} available SDRs in the Twilio {office} Office for {minutes} minutes interval meetings with time of {time_selected[0]} - {time_selected[1]}: \n")
 for ind, row in sdr[0].iterrows():
     print('--------------------------------------------------------------------------------------------')
