@@ -27,10 +27,10 @@ l_1= len(sdr[1])
 ###Input of 1 - 7 hour are in AM currently and we need to handle it such that its converted to business hours
 ###Since I ran out of time, I have listed all availabilities for the office overall
 
-print(f"There are {l} available SDRs in the Twilio {office} Office for {minutes} minutes interval meetings with time of {time_selected[0]} - {time_selected[1]}: \n")
+print(f"There are {l} available SDRs in the Twilio {office} Office for {minutes} minutes interval meetings with 24 hour time of {time_selected[0]} - {time_selected[1]}: \n")
 for ind, row in sdr[0].iterrows():
     print('--------------------------------------------------------------------------------------------')
-    print('{} {} {} \n \n \n'.format(ind, row['Email'], row['combined_slots']))
+    print('{} {} {}'.format(ind, row['Email'], row['combined_slots']))
 
 print(f"Overall There are {l_1} available SDRs in the Twilio {office} Office for {minutes} minutes: \n")
 for ind, row in sdr[1].iterrows():

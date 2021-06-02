@@ -73,29 +73,40 @@ def prompt_minutes():
 def prompt_time(minutes):
 
     tries = 3
-    
+    amPM = pd.DataFrame(['am','pm'])
+    amPM.columns = ["ampm"]   
     while tries > 0:
         print("Select a number between 1 - 12 for your hour, time request, to select your meeting time availability search: \n")
         try:
             hour = int(input())
         except:
-            print("Sorry ints sonly allowed - shutting down program")
+            print("Sorry ints only allowed - shutting down program")
             exit()
 
         print("Select a number 0 - 59 for your minutes, time request, to select your meeting time availability search: \n")
         try:
             minute = int(input())
         except:
-            print("Sorry ints sonly allowed - shutting down program")
+            print("Sorry ints only allowed - shutting down program")
             exit()
 
-        if hour >= 12 or hour <= 0 or minute < 0 or minute >= 59:
+        print("Select a number [0] for AM or [1] for PM for your time zone, to select your meeting time availability search: \n")
+        try:
+            idx = int(input())
+        except:
+            print("Sorry ints only allowed - shutting down program")
+            exit()
+
+        if hour >= 12 or hour <= 0 or minute < 0 or minute >= 59 or int(idx) not in amPM.index:
             tries -= 1
             print(f"####### You did not select a number or keep your numbers between requested frame, you have {tries} tries left ######")
-            print(f"####### You selected Hour = {hour} and Minute = {minute} ###")
+            print(f"####### You selected Hour = {hour} and Minute = {minute}, AM/PM = {idx} ###")
         else:
             ##Create your time  with hour and minute selection
-            selectedTime = dt.time(hour, minute)
+            timezone = amPM["ampm"].iloc[[idx]]
+            makeTime = str(hour) + ":" + str(minute) + str(timezone.iloc[0])
+
+            selectedTime = dt.datetime.strptime(makeTime, '%I:%M%p').time()
 
             ##Create end time based off of interval selection
             timedelta = dt.timedelta(minutes=int(minutes))

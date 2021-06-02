@@ -1,11 +1,8 @@
 import glob
 import os
-from posixpath import split
 import pandas as pd
 import datetime as dt
-
-from pandas.core.frame import DataFrame
-
+import re
 def get_sdr_list(min, office, time_selected):
     path = "sdr_availability/data/**/"
     all_files = glob.glob(os.path.join(path, "*.csv"))
@@ -50,23 +47,38 @@ def get_sdr_list(min, office, time_selected):
 
     for index, row in df_selected.iterrows():
         list_time.clear()
-        time_slots = row['combined_slots'].split(", ")
-        for time in time_slots:
-            more_time = time.split(" ")
-            for t in more_time:
-                if ':' in t:
-                    list_time.append(t)
+        ## How many times does the : appear
+        count_time = row['combined_slots'].count(":")
+        
+        ##Use re to loop through slots and add to string
+        i = 0
+        while count_time > 0:
+            #print(count_time)
+            try:
+                timeInStr = re.findall('[\d ]\d:\d\d \w\w', row['combined_slots'])[i].strip()
+                list_time.append(timeInStr)
+                count_time-=1
+                i+=1
+            except:
+                try:
+                    print("SECOND TRY: " + row['combined_slots'])
+                    timeInStr = re.findall('[\d ]\d:\d\d\w\w', row['combined_slots'])[i].strip()
+                    list_time.append(timeInStr)
+                    count_time-=1
+                    i+=1
+                except:
+                    pass
+
         n = 2
         split_list = [list_time[i * n:(i + 1) * n] for i in range((len(list_time) + n - 1) // n )] 
         
         for s in split_list:
-            begin_time = dt.datetime.strptime(s[0], '%H:%M').time()
-            end_time = dt.datetime.strptime(s[1], '%H:%M').time()
-            print(str(time_selected[0]) +" "+str(begin_time) +" "+ str(time_selected[1]) +" "+str(end_time))
+            begin_time = dt.datetime.strptime(s[0], '%I:%M %p').time()
+            end_time = dt.datetime.strptime(s[1], '%I:%M %p').time()
+            #print(str(time_selected[0]) +" "+str(begin_time) +" "+ str(time_selected[1]) +" "+str(end_time))
             test = time_selected[0] > begin_time and time_selected[1] < end_time
             if test:
-                print(test)
                 email_list.append(row['Email'])
-    print(email_list)
+                
     df_selected_time = df_selected[df_selected['Email'].isin(email_list)]
     return df_selected_time, df_selected
