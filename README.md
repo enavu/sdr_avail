@@ -10,6 +10,15 @@ multiple data sets and merge them
 filtering out data sets 
 reading requirements clearly
 ```
+
+* My methods implemented
+```
+1. Implemented Inputs for Office, Time and Meeting Interval
+2. Checks for inputs and require indexing selection
+3. Apply data minupulation for filtering for Office, Creating end time of meeting, and also AM/PM Time
+4. List out results
+```
+
 You have been provided a ZIP file containing several directories and files. Each directory represents a Twilio office within the United States. Each file contains a list of Sales Development Representatives (SDR) and their availability for the next week.
  
 Write a program that takes a time, a meeting length, and an office location. The program should return a list of SDRs that are available for a meeting
